@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulletin Board</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Bulletin Board</h1>
+        <div id="bulletins" class="columns">
+            <div class="column" id="column-1">
+                <!-- Bulletin items will be injected here -->
+            </div>
+            <div class="column" id="column-2">
+                <!-- Bulletin items will be injected here -->
+            </div>
+        </div>
+        <button id="loginButton" onclick="showLoginForm()">Manager Login</button>
+        <div id="loginForm" class="form" style="display:none;">
+            <h2>Login</h2>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password" onkeypress="checkEnter(event)">
+            <button onclick="login()">Login</button>
+        </div>
+        <div id="editForm" class="form" style="display:none;">
+            <h2>Add a New Announcement</h2>
+            <input type="text" id="title" placeholder="Title">
+            <textarea id="body" placeholder="Enter your announcement"></textarea>
+            <button onclick="addBulletin()">Add</button>
+            <button onclick="logout()">Logout</button>
+            <button id="toggleDragDropButton" onclick="toggleDragDrop()">Enable Drag & Drop</button>
+        </div>
+    </div>
+    <div id="editAnnouncementModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cancelEdit()">&times;</span>
+            <h2>Edit Announcement</h2>
+            <input type="text" id="editTitle" placeholder="Title">
+            <textarea id="editBody" placeholder="Enter your announcement"></textarea>
+            <button onclick="saveEdit()">Save</button>
+            <button onclick="cancelEdit()">Cancel</button>
+        </div>
+    </div>
+    <div id="viewAnnouncementModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeView()">&times;</span>
+            <h2 id="viewTitle"></h2>
+            <p id="viewBody"></p>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
